@@ -1,3 +1,4 @@
+/*
 package com.vub.pdproject.search;
 
 import java.util.concurrent.RecursiveTask;
@@ -37,3 +38,4 @@ public class ParallelOccurrencesTask extends RecursiveTask<Integer> {
 
     }
 }
+*/

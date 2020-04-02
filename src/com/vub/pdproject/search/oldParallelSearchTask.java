@@ -1,3 +1,4 @@
+/*
 package com.vub.pdproject.search;
 
 import com.vub.pdproject.data.YelpData;
@@ -12,29 +13,34 @@ public class ParallelSearchTask extends RecursiveTask {
     int first;
     int last;
     int p = 2;
+    int t;
 
-    /**
+    */
+/**
      * Creates a parallel search engine with p worker threads.
      * Counting occurrences is to be done sequentially (T ~ +inf)
      *
      * @param p parallelism level
-     */
+     *//*
+
     ParallelSearchTask(int p) {
         this(p, Integer.MAX_VALUE);
     }
 
 
-    /**
+    */
+/**
      * Creates a parallel search engine with p worker threads and sequential cut-off threshold T.
      *
      * @param p parallelism level
      * @param T sequential threshold
-     */
+     *//*
+
   ParallelSearchTask(String query_str, YelpData data, int T) {
-       // this.p = p;
-       // this.T = T;
+        this.p = p;
+        this.t = T;
         //Hint: Initialise the Java Fork/Join framework here as well.
-      this(String query_str, YelpData data, 0, data.getBusinessIDs().size());
+      this(query_str, data, 0, data.getBusinessIDs().size());
 
     }
 
@@ -50,7 +56,7 @@ public class ParallelSearchTask extends RecursiveTask {
 
         int i = 0;
         int t = 0;
-        if (last-first < 2) {
+        if (last-first < T) {
             //single region
             double relevance = evaluate_relevance(query, dataInMemory.getReview().text);
         } else {
@@ -75,4 +81,4 @@ public class ParallelSearchTask extends RecursiveTask {
         //return the result
         return relevance;
     }
-}
+}*/
