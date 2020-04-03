@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelOccurrencesTask.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearchTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/oldParallelSearchTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/oldParallelSearchTask.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +42,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.Main.testCountOccurrences">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
@@ -57,8 +56,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main.testCountOccurrences" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectPDJFJ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vub.pdproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vub.pdproject" />
+      <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
+      <option name="METHOD_NAME" value="testCountOccurrences" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main.testParallelization2A" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectPDJFJ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vub.pdproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vub.pdproject" />
+      <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
+      <option name="METHOD_NAME" value="testParallelization2A" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main.testParallelization2B" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectPDJFJ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vub.pdproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vub.pdproject" />
+      <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
+      <option name="METHOD_NAME" value="testParallelization2B" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Main.testCountOccurrences" />
+        <item itemvalue="JUnit.Main.testParallelization2B" />
+        <item itemvalue="JUnit.Main.testParallelization2A" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

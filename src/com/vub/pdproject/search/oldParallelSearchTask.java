@@ -60,12 +60,12 @@ public class ParallelSearchTask extends RecursiveTask {
             //single region
             double relevance = evaluate_relevance(query, dataInMemory.getReview().text);
         } else {
-            int pivot = (first + last) / 2;
-            ParallelSearchTask left = new ParallelSearchTask(query, dataInMemory, first, pivot);
-            ParallelSearchTask right = new ParallelSearchTask(query, dataInMemory, pivot, last);
-            right.fork();
-            QueryEngine.RRecord relevant_businesses_left = left.compute();
-            QueryEngine.RRecord relevant_businesses_right = right.join();
+                int pivot = (first + last) / 2;
+                ParallelSearchTask left = new ParallelSearchTask(query, dataInMemory, first, pivot);
+                ParallelSearchTask right = new ParallelSearchTask(query, dataInMemory, pivot, last);
+                right.fork();
+                QueryEngine.RRecord relevant_businesses_left = left.compute();
+                QueryEngine.RRecord relevant_businesses_right = right.join();
 
             return relevant_businesses_left.addAll(relevant_businesses_right);
 
