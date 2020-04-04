@@ -27,6 +27,7 @@ import static com.vub.pdproject.search.SequentialSearch.evaluate_relevance;
 public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> implements QueryEngine{
 	int p; //parallelism level (i.e. max. # cores that can be used by Java Fork/Join)
 	int T; //sequential threshold (semantics depend on your cut-off implementation)
+	static ForkJoinPool forkJoinPool;
 	String query;
 	YelpData dataInMem;
 	int start;
@@ -51,9 +52,9 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	public ParallelSearch(int p, int T){
 		this.p = p;
 		this.T = T;
-
-
 		//Hint: Initialise the Java Fork/Join framework here as well.
+		forkJoinPool = new ForkJoinPool(p);
+
 	}
 
 	/**
@@ -62,7 +63,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 * @param data the data to search in.
 	 */
 	ParallelSearch(String query_str, YelpData data){
-				this(query_str, data,0,data.getBusinessIDs().size());
+		this(query_str, data,0,data.getBusinessIDs().size());
 
 	}
 
@@ -91,6 +92,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			double relevance = evaluate_relevance(query, bid, dataInMem);
 			if (relevance > 0) {
 				result.add(new RRecord(bid, relevance));
+
 			}
 		}else{
 			int pivot = (start + end) / 2;
@@ -102,10 +104,13 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			List<RRecord> finalList = Stream.of(relevant_businesses_left, relevant_businesses_right)
 					.flatMap(x -> x.stream())
 					.collect(Collectors.toList());
+
+			//and sort the list parallel!
 			Collections.sort(finalList);
+
 			return finalList;
 		}
- 		return result;
+		return result;
 
 	}
 
@@ -117,11 +122,23 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 */
 	@Override
 	public List<RRecord> search(String query_str, YelpData data) {
-		ForkJoinPool forkJoinPool = new ForkJoinPool(p);
-		List<RRecord> relevant_businesses = forkJoinPool.invoke(new ParallelSearch(query_str, data));
 
+		List<RRecord> relevant_businesses = forkJoinPool.invoke(new ParallelSearch(query_str, data));
+		List<RRecord> sorted_businesses = forkJoinPool.invoke(new ParallelSort(relevant_businesses));
 		//TODO: implement this method using Java Fork-Join
 		return relevant_businesses;
 	}
 
+}
+class ParallelSort extends RecursiveTask<List<QueryEngine.RRecord>>{
+	List<QueryEngine.RRecord> list;
+
+	ParallelSort(List<QueryEngine.RRecord> lst){
+this.list = lst;
+	}
+
+	@Override
+	protected List<QueryEngine.RRecord> compute() {
+		return list;
+	}
 }

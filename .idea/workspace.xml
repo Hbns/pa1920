@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/oldParallelSearchTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/oldParallelSearchTask.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
