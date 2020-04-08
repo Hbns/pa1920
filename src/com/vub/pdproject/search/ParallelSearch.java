@@ -11,7 +11,9 @@ import java.util.concurrent.RecursiveTask;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.vub.pdproject.Util;
 import com.vub.pdproject.data.YelpData;
+import com.vub.pdproject.data.models.Business;
 
 import static com.vub.pdproject.search.SequentialSearch.evaluate_relevance;
 
@@ -95,7 +97,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		List<RRecord> result = new ArrayList<RRecord>();
 		if (end - start < 2) {
 			String bid = dataInMem.getBusinessIDs().get(start);
-			double relevance = evaluate_relevance(query, bid, dataInMem);
+			double relevance = evaluate_relevanceP(query, bid, dataInMem);
 			if (relevance > 0) {
 				result.add(new RRecord(bid, relevance));
 
@@ -193,6 +195,68 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		private boolean isLess(T a, T b) {
 			return a.compareTo(b) < 0;
 		}
+	}
+	public static double evaluate_relevanceP(String keyword, String businessID, YelpData data) {
+		//fetch data for business
+		Business bd = data.getBusiness(businessID);
+
+		//check in how many times query string appears in reviews
+		int occurences = 0;
+		for(String rid : bd.reviews){
+			occurences += countOccurrences(keyword,data.getReview(rid).text);
+		}
+
+		//calculate relevance score
+		double relevance_score = 0;
+		if(countOccurrences(keyword,bd.name) > 0){
+			relevance_score = 0.5;
+		}
+		relevance_score += 1.5*occurences/(occurences+20);
+		relevance_score *= bd.stars;
+		return relevance_score;
+	}
+
+	/**
+	 *
+	 * @param keyword	The keyword to be searched for
+	 * @param text 		The text to be searched.
+	 * @return 			The number of occurrences of a keyword in a text
+	 * 					Search is case-sensitive.
+	 * 					To match, a word in text must be delimited by white space/punctuation marks
+	 *                  (or appear at the beginning/end of the text)
+	 *
+	 * 					examples:
+	 *
+	 * 					keyword: burger
+	 *
+	 * 					text: "This burger was so good!" (returns 1)
+	 * 					text: "Great burger" (returns 1)
+	 * 					text: "Great burger!" (returns 1)
+	 * 					text: "Great Burger" (returns 0)
+	 * 					text: "burgers don't get any better!" (returns 0)
+	 *
+	 */
+	public static int countOccurrences(String keyword, String text){
+		int count = 0;
+		int k = 0;
+		for (int i=0; i < text.length(); i++){
+			if(Util.isWhitespaceOrPunctuationMark(text.charAt(i))){
+				if(k == keyword.length()){
+					count++;
+				}
+				k = 0;
+			}else if(k >= 0){
+				if(k < keyword.length() && text.charAt(i) == keyword.charAt(k)){
+					k++;
+				}else{
+					k = -1;
+				}
+			}
+		}
+		if(k == keyword.length()){
+			count++;
+		}
+		return count;
 	}
 
 /*	public class Node {

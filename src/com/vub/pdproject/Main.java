@@ -21,8 +21,9 @@ public class Main {
 	 * Main method, providing a usage example and can be used for experimentation
 	 */
 	public static void main(String[] args) throws IOException {
-		int benchmark = 1; //benchmark to be used (1-3 on your machine or 0 on Serenity)
-		
+
+		int benchmark = 3; //benchmark to be used (1-3 on your machine or 0 on Serenity)
+		long startTime = System.currentTimeMillis();
 		YelpQuery query = YelpQuery.forBenchmark(benchmark);
 		System.out.println("*** QUERY ***");
 		System.out.println(query); //prints out some information about this benchmark
@@ -39,6 +40,9 @@ public class Main {
 			System.out.println(i+") "+query.getData().getBusiness(rbid.businessID).name+" ("+rbid.relevance_score+")");
 			i++;
 		}
+		long endTime = System.currentTimeMillis();
+		System.out.println("Total execution time: " + (endTime-startTime) + "ms");
+
 	}
 	
 	/*
