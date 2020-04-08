@@ -4,7 +4,10 @@
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/SequentialSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/SequentialSearch.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +33,17 @@
   </component>
   <component name="ProjectId" id="1Zeifbra5n0atD3K642Cwh3g04r" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/vub/pdproject/search" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.vub.pdproject.search" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/vub/pdproject/search" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -42,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Main.testCountOccurrences">
+  <component name="RunManager" selected="JUnit.Main.testParallelization2A">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
@@ -106,9 +120,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Main.testCountOccurrences" />
-        <item itemvalue="JUnit.Main.testParallelization2B" />
         <item itemvalue="JUnit.Main.testParallelization2A" />
+        <item itemvalue="JUnit.Main.testParallelization2B" />
+        <item itemvalue="JUnit.Main.testCountOccurrences" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

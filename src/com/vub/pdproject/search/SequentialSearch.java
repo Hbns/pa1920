@@ -2,8 +2,6 @@ package com.vub.pdproject.search;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
 import com.vub.pdproject.Util;
 import com.vub.pdproject.data.YelpData;
 import com.vub.pdproject.data.models.Business;
