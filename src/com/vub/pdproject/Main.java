@@ -3,8 +3,11 @@ package com.vub.pdproject;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -16,35 +19,83 @@ import com.vub.pdproject.search.YelpQuery;
 import com.vub.pdproject.search.QueryEngine.RRecord;
 
 public class Main {
-	
+
 	/*
 	 * Main method, providing a usage example and can be used for experimentation
 	 */
 	public static void main(String[] args) throws IOException {
+		int testruns = 15;
 
-		int benchmark = 3; //benchmark to be used (1-3 on your machine or 0 on Serenity)
-		long startTime = System.currentTimeMillis();
-		YelpQuery query = YelpQuery.forBenchmark(benchmark);
-		System.out.println("*** QUERY ***");
-		System.out.println(query); //prints out some information about this benchmark
-		
+		//int benchmark = 3; //benchmark to be used (1-3 on your machine or 0 on Serenity)
+		//long startTime = System.currentTimeMillis();
+		//YelpQuery query = YelpQuery.forBenchmark(benchmark);
+		//System.out.println("*** QUERY ***");
+		//System.out.println(query); //prints out some information about this benchmark
+
 		QueryEngine qe = new SequentialSearch();
-		
-		List<RRecord> rbids = query.execute(qe); //execute query using query engine
-		
-		//output the result of the query (names of businesses and their relevance, ordered by decreasing relevance)
-		System.out.println();
-		System.out.println("*** RESULT ***");
-		int i = 1;
-		for(RRecord rbid : rbids){
-			System.out.println(i+") "+query.getData().getBusiness(rbid.businessID).name+" ("+rbid.relevance_score+")");
-			i++;
-		}
-		long endTime = System.currentTimeMillis();
-		System.out.println("Total execution time: " + (endTime-startTime) + "ms");
 
+		//List<RRecord> rbids = query.execute(qe); //execute query using query engine
+
+		//output the result of the query (names of businesses and their relevance, ordered by decreasing relevance)
+//		System.out.println();
+//		System.out.println("*** RESULT ***");
+//		int i = 1;
+//		for(RRecord rbid : rbids){
+//			System.out.println(i+") "+query.getData().getBusiness(rbid.businessID).name+" ("+rbid.relevance_score+")");
+//			i++;
+//		}
+//		long endTime = System.currentTimeMillis();
+//		System.out.println("Total execution time: " + (endTime-startTime) + "ms");
+		for(int j = 1; j < 4; j++){
+			long[] temp = new long[testruns];
+			for(int k = 1; k <= testruns; k++) {
+
+				long startTime = System.currentTimeMillis();
+				YelpQuery query = YelpQuery.forBenchmark(j);
+				System.out.println("*** QUERY ***");
+				System.out.println(query); //prints out some information about this benchmark
+				List<RRecord> rbids = query.execute(qe); //execute query using query engine
+				System.out.println();
+				System.out.println("*** RESULT ***");
+				int i = 1;
+				for (RRecord rbid : rbids) {
+					System.out.println(i + ") " + query.getData().getBusiness(rbid.businessID).name + " (" + rbid.relevance_score + ")");
+					i++;
+				}
+				long endTime = System.currentTimeMillis();
+				temp[k - 1] = (endTime - startTime);
+				//System.out.println("Total execution time: " + (endTime - startTime) + "ms");
+			}
+			long avg = (Arrays.stream(temp).sum() / testruns);
+			List<Long> send = Arrays.stream(temp).boxed().collect(Collectors.toList());
+			write2file(j,send, avg);
+			System.out.println("Avrage execution time: " + avg + "ms for preset " + j + ".");
+		}
 	}
-	
+	// some 0 is in the runtimes so avg is not correct.
+	//writes runtimes for a given strategy to file
+	static private void write2file(int preset, List<Long> runtimes, long avg){
+		File res_file = new File("runtimes_preset_"+preset+".csv");
+//		if(res_file.exists()){
+//			//avoids accidentally overwriting previous results
+//			System.out.println(res_file+" already exists, skipping preset "+i);
+//			continue;
+//		}
+		PrintWriter csv_writer;
+		try {
+			csv_writer = new PrintWriter(new FileOutputStream(res_file,true));
+			String line = "";
+			for(Long rt : runtimes){
+				line += ","+rt;
+			}
+			csv_writer.println(line);
+			csv_writer.println("Average run time: " + avg + " for " + runtimes.size() + " testruns. ");
+
+			csv_writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	/*
 	 * Unit tests
 	 */

@@ -131,7 +131,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		//Search relevant businesses
 		List<RRecord> relevant_businesses = forkJoinPool.invoke(new ParallelSearch(query_str, data));
 		//Convert List to Array.
-		RRecord[] sortArray = relevant_businesses.toArray(new RRecord[relevant_businesses.size()]);
+		RRecord[] sortArray = relevant_businesses.stream().toArray(RRecord[]::new);
 		//Sort the Array.
 		sort(sortArray);
 		//Convert to list and return
@@ -147,8 +147,8 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 * @param <T>
 	 */
 	public  <T extends Comparable<? super T>> void sort(T[] a) {
-		@SuppressWarnings("unchecked")
-		T[] helper = (T[])Array.newInstance(a[0].getClass() , a.length);
+		T[] helper = a.clone();
+		//T[] helper = (T[])Array.newInstance(a[1].getClass() , a.length);
 		forkJoinPool.invoke(new MergeSortTask<T>(a, helper, 0, a.length-1));
 	}
 
