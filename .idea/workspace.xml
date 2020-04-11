@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bench/Par_runtimes_preset_1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bench/Par_runtimes_preset_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bench/Par_runtimes_preset_3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.Main.testCountOccurrences">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
@@ -118,10 +116,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.Main.testParallelization2A" />
-        <item itemvalue="JUnit.Main.testParallelization2B" />
         <item itemvalue="JUnit.Main.testCountOccurrences" />
+        <item itemvalue="JUnit.Main.testParallelization2A" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.Main.testParallelization2B" />
       </list>
     </recent_temporary>
   </component>

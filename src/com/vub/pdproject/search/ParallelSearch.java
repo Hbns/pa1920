@@ -196,14 +196,14 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			return a.compareTo(b) < 0;
 		}
 	}
-	public static double evaluate_relevanceP(String keyword, String businessID, YelpData data) {
+	public double evaluate_relevanceP(String keyword, String businessID, YelpData data) {
 		//fetch data for business
 		Business bd = data.getBusiness(businessID);
 
 		//check in how many times query string appears in reviews
 		int occurences = 0;
 		for(String rid : bd.reviews){
-			occurences += countOccurrences(keyword,data.getReview(rid).text);
+			occurences += forkJoinPool.invoke(new CountOccurences(keyword,data.getReview(rid).text));
 		}
 
 		//calculate relevance score
@@ -258,6 +258,60 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		}
 		return count;
 	}
+
+	public class CountOccurences extends RecursiveTask<Integer>{
+		String query;
+		String review;
+		int start;
+		int end;
+
+
+		CountOccurences(String keyword, String text){
+			this(keyword, text, 0, text.length());
+		}
+
+		CountOccurences(String keyword, String text, int start, int end){
+			this.query = keyword;
+			this.review = text;
+			this.start = start;
+			this.end = end;
+		}
+		protected Integer compute(){
+			int count = 0;
+			int k = 0;
+			if (end - start < 2) {
+				if(Util.isWhitespaceOrPunctuationMark(review.charAt(start))){
+					if(k == query.length()){
+						count++;
+					}
+					k = 0;
+				}else if(k >= 0){
+					if(k < query.length() && review.charAt(start) == query.charAt(k)){
+						k++;
+					}else{
+						k = -1;
+					}}
+					if(k == query.length()){
+					count++;
+					}
+			} else {
+				int pivot = (start + end) / 2;
+				CountOccurences left = new CountOccurences(query, review, start, pivot);
+				CountOccurences right = new CountOccurences(query, review, pivot, end);
+				right.fork();
+				int occurrence_left = left.compute();
+				int occurrences_right = right.join();
+				int total_occurrences = occurrence_left + occurrences_right;
+
+				return total_occurrences;
+			}
+			return count;
+
+				}
+			}
+		}
+
+
 
 /*	public class Node {
 		Node left;
@@ -478,6 +532,6 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			forkJoinPool.invoke(t);
 			return output;
 		}}*/
-}
+
 
 //prefix, pack
