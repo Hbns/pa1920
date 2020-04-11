@@ -277,24 +277,21 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			this.end = end;
 		}
 		protected Integer compute(){
-			int count = 0;
-			int k = 0;
+			int ql = query.length();
+			int rl = review.length();
+			int charcount = 0;
+			int occcount =0;
 			if (end - start < 2) {
-				if(Util.isWhitespaceOrPunctuationMark(review.charAt(start))){
-					if(k == query.length()){
-						count++;
+				int i = ql - 1;
+				while ( query.charAt(i) == review.charAt(start + i) && i >= 0){
+						charcount ++;
+						i--;
 					}
-					k = 0;
-				}else if(k >= 0){
-					if(k < query.length() && review.charAt(start) == query.charAt(k)){
-						k++;
-					}else{
-						k = -1;
-					}}
-					if(k == query.length()){
-					count++;
-					}
-			} else {
+				if (charcount == ql) {
+					occcount++;
+				}
+
+			}else{
 				int pivot = (start + end) / 2;
 				CountOccurences left = new CountOccurences(query, review, start, pivot);
 				CountOccurences right = new CountOccurences(query, review, pivot, end);
@@ -303,13 +300,13 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				int occurrences_right = right.join();
 				int total_occurrences = occurrence_left + occurrences_right;
 
-				return total_occurrences;
+				occcount = total_occurrences;
 			}
-			return count;
+			return occcount;
 
-				}
-			}
 		}
+	}
+}
 
 
 
