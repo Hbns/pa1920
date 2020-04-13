@@ -203,12 +203,12 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		//check in how many times query string appears in reviews
 		int occurences = 0;
 		for(String rid : bd.reviews){
-			occurences += forkJoinPool.invoke(new CountOccurences(keyword,data.getReview(rid).text));
+			occurences += countOccurrencesP(keyword,data.getReview(rid).text);
 		}
 
 		//calculate relevance score
 		double relevance_score = 0;
-		if(countOccurrences(keyword,bd.name) > 0){
+		if(countOccurrencesP(keyword,bd.name) > 0){
 			relevance_score = 0.5;
 		}
 		relevance_score += 1.5*occurences/(occurences+20);
@@ -236,62 +236,51 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 * 					text: "burgers don't get any better!" (returns 0)
 	 *
 	 */
-	public static int countOccurrences(String keyword, String text){
+	public int countOccurrencesP(String keyword, String text){
 		int count = 0;
-		int k = 0;
-		for (int i=0; i < text.length(); i++){
-			if(Util.isWhitespaceOrPunctuationMark(text.charAt(i))){
-				if(k == keyword.length()){
-					count++;
-				}
-				k = 0;
-			}else if(k >= 0){
-				if(k < keyword.length() && text.charAt(i) == keyword.charAt(k)){
-					k++;
-				}else{
-					k = -1;
-				}
-			}
-		}
-		if(k == keyword.length()){
-			count++;
+		if (text.length() == 0){
+			count = 0;
+		}else{
+			count = forkJoinPool.invoke(new CountOccurences(keyword, prepareText(text)));
 		}
 		return count;
 	}
 
+	public String[] prepareText(String input){
+		String possibleSplits = "\\s|,|\\.|-";
+		String[] output;
+		output = input.split(possibleSplits);
+		return output;
+	}
+
 	public class CountOccurences extends RecursiveTask<Integer>{
 		String query;
-		String review;
+		String[] review;
 		int start;
 		int end;
 
 
-		CountOccurences(String keyword, String text){
-			this(keyword, text, 0, text.length());
+		CountOccurences(String keyword, String[] text){
+			this(keyword, text, 0, text.length);
 		}
 
-		CountOccurences(String keyword, String text, int start, int end){
+		CountOccurences(String keyword, String[] text, int start, int end){
 			this.query = keyword;
 			this.review = text;
 			this.start = start;
 			this.end = end;
 		}
 		protected Integer compute(){
-			int ql = query.length();
-			int rl = review.length();
-			int charcount = 0;
-			int occcount =0;
+		int count = 0;
 			if (end - start < 2) {
-				int i = ql - 1;
-				while ( query.charAt(i) == review.charAt(start + i) && i >= 0){
-						charcount ++;
-						i--;
-					}
-				if (charcount == ql) {
-					occcount++;
+				if (query.equals(review[start])){
+					count++;
 				}
-
-			}else{
+			}
+			//else if (T > 0){
+//split in T parts and handle each part seq
+			//}
+			else{
 				int pivot = (start + end) / 2;
 				CountOccurences left = new CountOccurences(query, review, start, pivot);
 				CountOccurences right = new CountOccurences(query, review, pivot, end);
@@ -300,9 +289,9 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				int occurrences_right = right.join();
 				int total_occurrences = occurrence_left + occurrences_right;
 
-				occcount = total_occurrences;
+				count = total_occurrences;
 			}
-			return occcount;
+			return count;
 
 		}
 	}
