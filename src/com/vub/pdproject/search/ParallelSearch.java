@@ -247,7 +247,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	}
 
 	public String[] prepareText(String input){
-		String possibleSplits = "\\s|,|\\.|-";
+		String possibleSplits = "\\s|,|!|\\(|\\)|\\.|-";
 		String[] output;
 		output = input.split(possibleSplits);
 		return output;
