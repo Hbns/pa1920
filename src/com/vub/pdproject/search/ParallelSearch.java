@@ -247,7 +247,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	}
 
 	public String[] prepareText(String input){
-		String possibleSplits = "\\s|,|!|\\(|\\)|\\.|-";
+		String possibleSplits = "\\s|,|!|\\(|\\)|\\.|-|:";
 		String[] output;
 		output = input.split(possibleSplits);
 		return output;
@@ -259,7 +259,6 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		int start;
 		int end;
 
-
 		CountOccurences(String keyword, String[] text){
 			this(keyword, text, 0, text.length);
 		}
@@ -270,17 +269,19 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			this.start = start;
 			this.end = end;
 		}
-		protected Integer compute(){
-		int count = 0;
+		protected Integer compute() {
+			int count = 0;
 			if (end - start < 2) {
-				if (query.equals(review[start])){
+				if (query.equals(review[start])) {
 					count++;
 				}
-			}
-			//else if (T > 0){
-//split in T parts and handle each part seq
-			//}
-			else{
+			} else if (end - start < T) {
+				for (int i = start; i <= end; i++) {
+					if (query.equals(review[start])) {
+						count++;
+					}
+				}
+			}else{
 				int pivot = (start + end) / 2;
 				CountOccurences left = new CountOccurences(query, review, start, pivot);
 				CountOccurences right = new CountOccurences(query, review, pivot, end);
@@ -288,236 +289,9 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				int occurrence_left = left.compute();
 				int occurrences_right = right.join();
 				int total_occurrences = occurrence_left + occurrences_right;
-
 				count = total_occurrences;
 			}
 			return count;
-
 		}
 	}
 }
-
-
-
-/*	public class Node {
-		Node left;
-		Node right;
-		int sum;
-		int lo;
-		int hi;
-		public Node(Node ln, Node rn, int s, int l, int h) {
-			left  = ln; right = rn; sum   = s;
-			lo    = l; hi    = h;
-		}
-		boolean isALeaf() { return left == null; }
-	}
-	public class PrefixSum extends RecursiveAction {
-
-		private static final long serialVersionUID = 1L;
-
-		*//**
-		 * This task computes the first pass, the "up" pass of a parallel prefix.
-		 * It builds a binary tree in parallel from bottom (ie. the leaf nodes) and to top
-		 * (i.e returns the root).
-		 * Every node holds the sum of the integers in its range [low, high[.
-		 * The root of the tree holds the sum for the entire range [O,n[
-		 *//*
-		class BuildTree extends RecursiveTask<Node> {
-
-			private static final long serialVersionUID = 1L;
-
-			private int SEQUENTIAL_THRESHOLD = 1000;
-
-			int[] input;
-			int lo;
-			int hi;
-
-			public BuildTree(int[] in, int l, int h) {
-				input = in;
-				lo = l;
-				hi = h;
-			}
-
-			@Override
-			protected Node compute() {
-				if (hi - lo <= SEQUENTIAL_THRESHOLD) {
-					int ans = 0;
-					for (int i = lo; i < hi; ++i)
-						ans += input[i];
-					return new Node(null, null, ans, lo, hi);
-				} else {
-					int mid = (lo + hi) / 2;
-					BuildTree left = new BuildTree(input, lo, mid);
-					BuildTree right = new BuildTree(input, mid, hi);
-					left.fork();
-					Node rightNode = right.compute();
-					Node leftNode = left.join();
-					int sum = leftNode.sum + rightNode.sum;
-					return new Node(leftNode, rightNode, sum, lo, hi);
-				}
-			}
-		}
-
-		Node node;
-		int fromLeft;
-		int[] input;
-		int[] output;
-
-		PrefixSum(Node n, int sum, int[] in, int[] out) {
-			node = n;
-			fromLeft = sum;
-			input = in;
-			output = out;
-		}
-
-		*//**
-		 * PrefixSum computes the second pass, the "down" pass of a parallel prefix.
-		 * It computes the prefix-sum passing "down" as an argument the sum of the array
-		 * indices to the left of the node
-		 *//*
-
-		@Override
-		protected void compute() {
-			if (node.isALeaf()) {
-				// sequential prefix sum from [lo,hi[
-				int lo = node.lo;
-				int hi = node.hi;
-				output[lo] = fromLeft + input[lo];
-				for (int i = lo + 1; i < hi; i++) {
-					output[i] = output[i - 1] + input[i];
-				}
-			} else {
-				PrefixSum left = new PrefixSum(node.left, fromLeft, input, output);
-				PrefixSum right = new PrefixSum(node.right, fromLeft + node.left.sum, input, output);
-				left.fork();
-				right.compute();
-				left.join();
-			}
-		}
-
-		int[] prefixSumParallel(int[] input) {
-			int[] output = new int[input.length];
-			// step 1: "up" pass
-			Node root = forkJoinPool.invoke(new BuildTree(input, 0, input.length));
-			// step 2: "down" pass
-			forkJoinPool.invoke(new PrefixSum(root, 0, input, output));
-			return output;
-		}
-
-	}
-
-	public interface FilterTwo<T,U> {
-		public boolean filter(T element, U value);
-	}
-
-	public class Pack extends RecursiveAction{
-
-		private static final long serialVersionUID = 1L;
-
-		private int SEQUENTIAL_THRESHOLD = 1000;
-
-
-		final FilterTwo<Integer, Integer> greaterThan = (d, e) -> (d > e);
-		final FilterTwo<Integer, Integer> smallerThan = (d, e) -> (d < e);
-
-		final int[] input;
-		final int[] output;
-		final int lo;
-		final int hi;
-		final int[] bitVector;
-		final int[] bitSum;
-
-		public Pack(int[] in, int[] out, int l, int h, int[] bitv, int[] bits) {
-			input = in; output =out; lo = l; hi = h; bitVector = bitv; bitSum = bits;
-		}
-
-		@Override
-		protected void compute() {
-			if ((hi - lo) < SEQUENTIAL_THRESHOLD) {
-				for (int i = lo; i < hi; i++) {
-					if (bitVector[i] ==1)
-						output[bitSum[i]-1] = input[i];
-				}
-			}else{
-				int mid = (lo + hi)/2;
-				Pack left = new Pack(input, output, lo, mid, bitVector, bitSum);
-				Pack right = new Pack(input, output, mid, hi, bitVector, bitSum);
-				left.fork();
-				right.compute();
-				left.join();
-			}
-		}
-
-
-		int[] packParallel(int[] input, FilterTwo<Integer, Integer> filter ){
-			MapArray.BinaryOp<Integer> bitOn = (elem, pivot) -> filter.filter(elem, pivot) ? 1:0	;
-			// step 1: perform parallel map to produce bit vector of {0,1} indicating
-			// whether the corresponding input element satisfies the filter
-			final int[] bitVector =  MapArray.map(input, bitOn);
-			// step 2: perform parallel prefix sum on the bit vector produced in the previous step.
-			final int[] bitSum = PrefixSum.prefixSumParallel(bitVector);
-			// step 3: perform parallel map to assign input elements to bitsum[i]-1 in the
-			// output array if bitvector[i] is set
-			int out_length = bitSum[bitSum.length-1];
-			final int[] output = new int[out_length];
-			forkJoinPool.invoke(new Pack(input, output, 0, input.length, bitVector, bitSum));
-			return output;
-
-		}
-
-	}
-	public interface BinaryOp<T> {
-		public Integer apply(T op1, T op2);
-	}
-	public class MapArray extends RecursiveAction{
-
-		*//**
-		 * Users of {@link MapArray} should use a {@link BinaryOp} instance to map
-		 * source to target elements.
-		 * op1: index of the source element of the array
-		 * op2: source element of the array
-		 *//*
-
-
-
-		final BinaryOp<Integer> sum = (a,b) -> a+b;
-		final BinaryOp<Integer> square = (a,b) -> a*b;
-
-
-		private static final long serialVersionUID = 1L;
-
-		private int SEQUENTIAL_THRESHOLD = 1000;
-
-		int lo;
-		int hi;
-		int[] in;
-		int[] out;
-		BinaryOp<Integer> binop;
-
-		public MapArray(int[] input, int[] output, int l,int h, BinaryOp<Integer> b){
-			lo=l; hi=h; in = input; out = output; binop = b;
-		}
-		protected void compute(){
-			if( (hi - lo) < SEQUENTIAL_THRESHOLD) {
-				for(int i=lo; i < hi; i++)
-					out[i] = binop.apply(i, in[i]);
-			} else {
-				int mid = (hi+lo)/2;
-				MapArray left = new MapArray(in,out,lo,mid,binop);
-				MapArray right= new MapArray(in,out,mid,hi,binop);
-				left.fork();
-				right.compute();
-				left.join();
-			}
-		}
-
-
-		int[] map(int[] input, BinaryOp<Integer> binop){
-			int[] output = new int[input.length];
-			MapArray t = new MapArray(input, output, 0, input.length,binop);
-			forkJoinPool.invoke(t);
-			return output;
-		}}*/
-
-
-//prefix, pack

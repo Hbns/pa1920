@@ -25,13 +25,16 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		int benchmark = 1; //benchmark to be used (1-3 on your machine or 0 on Serenity)
+		int benchmark = 3; //benchmark to be used (1-3 on your machine or 0 on Serenity)
 		long startTime = System.currentTimeMillis();
 		YelpQuery query = YelpQuery.forBenchmark(benchmark);
 		System.out.println("*** QUERY ***");
 		System.out.println(query); //prints out some information about this benchmark
 
-		QueryEngine qe = new SequentialSearch();
+		QueryEngine qe = new ParallelSearch(4,Integer.MAX_VALUE);
+		//QueryEngine qe = new ParallelSearch(4,10);
+
+		//QueryEngine qe = new SequentialSearch();
 
 		List<RRecord> rbids = query.execute(qe); //execute query using query engine
 
