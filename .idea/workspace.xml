@@ -2,13 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.log" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Report/PaReport.toc" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/META-INF/ProjectPDJFJ.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Estimate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Estimate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/YelpData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/YelpData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpBusinessReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpBusinessReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpDataHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpDataHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpReviewReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpReviewReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$MergeSortTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$MergeSortTask.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,8 +47,15 @@
   </component>
   <component name="ProjectId" id="1Zeifbra5n0atD3K642Cwh3g04r" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/vub/pdproject/search" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -42,18 +64,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/com/vub/pdproject/search" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -117,21 +127,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.vub.pdproject in ProjectPDJFJ" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectPDJFJ" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vub.pdproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vub.pdproject" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BSP.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.Main.testParallelization2A" />
-        <item itemvalue="JUnit.Main.testParallelization2B" />
         <item itemvalue="JUnit.Main.testCountOccurrences" />
+        <item itemvalue="JUnit.Main.testParallelization2B" />
+        <item itemvalue="JUnit.Main.testParallelization2A" />
+        <item itemvalue="JUnit.com.vub.pdproject in ProjectPDJFJ" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SbtLocalSettings">
-    <option name="projectSyncType">
-      <map>
-        <entry key="$USER_HOME$/se/WPO/swing-texteditor" value="PREVIEW" />
-      </map>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -151,12 +170,57 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="99" y="99" width="1722" height="885" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594756197777">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="99" y="99" width="1722" height="885" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594756197777" />
+    <state width="1878" height="357" key="GridCell.Tab.0.bottom" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
+    <state width="1878" height="357" key="GridCell.Tab.0.center" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
+    <state width="1878" height="357" key="GridCell.Tab.0.left" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
+    <state width="1878" height="357" key="GridCell.Tab.0.right" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
+    <state width="1878" height="357" key="GridCell.Tab.1.bottom" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.1.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.1.center" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.1.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.1.left" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.1.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.1.right" timestamp="1594815324261">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.1.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state x="623" y="248" key="run.anything.popup" timestamp="1594799193780">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="248" key="run.anything.popup/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594799193780" />
   </component>
 </project>

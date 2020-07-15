@@ -15,6 +15,7 @@ import com.vub.pdproject.Util;
 import com.vub.pdproject.data.YelpData;
 import com.vub.pdproject.data.models.Business;
 
+import static com.vub.pdproject.search.SequentialSearch.countOccurrences;
 import static com.vub.pdproject.search.SequentialSearch.evaluate_relevance;
 
 /**
@@ -200,15 +201,19 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		//fetch data for business
 		Business bd = data.getBusiness(businessID);
 
+		//De Parralelle oplossing geeft fout resultaat, de unit tests falen.
 		//check in how many times query string appears in reviews
 		int occurences = 0;
 		for(String rid : bd.reviews){
+			//occurences += countOccurrences(keyword,data.getReview(rid).text);
 			occurences += countOccurrencesP(keyword,data.getReview(rid).text);
 		}
 
 		//calculate relevance score
 		double relevance_score = 0;
-		if(countOccurrencesP(keyword,bd.name) > 0){
+		//if(countOccurrences(keyword,bd.name) > 0){
+			if(countOccurrencesP(keyword,bd.name) > 0){
+
 			relevance_score = 0.5;
 		}
 		relevance_score += 1.5*occurences/(occurences+20);
@@ -241,13 +246,14 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		if (text.length() == 0){
 			count = 0;
 		}else{
-			count = forkJoinPool.invoke(new CountOccurences(keyword, prepareText(text)));
+			//count = forkJoinPool.invoke(new CountOccurencesP(keyword, prepareText(text)));
+			count = forkJoinPool.invoke(new CountOccurencesALT(keyword, text));
 		}
 		return count;
 	}
 
 	public String[] prepareText(String input){
-		String possibleSplits = "\\s|,|!|\\(|\\)|\\.|-|:";
+		String possibleSplits = "\\s|\\.";
 		String[] output;
 		output = input.split(possibleSplits);
 		return output;
@@ -277,13 +283,13 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				}
 			} else if (end - start < T) {
 				for (int i = start; i <= end; i++) {
-					if (query.equals(review[start])) {
+					if (query.equals(review[i])) {
 						count++;
 					}
 				}
 			}else{
 				int pivot = (start + end) / 2;
-				CountOccurences left = new CountOccurences(query, review, start, pivot);
+				CountOccurences left = new CountOccurences(query, review, start, pivot - 1);
 				CountOccurences right = new CountOccurences(query, review, pivot, end);
 				right.fork();
 				int occurrence_left = left.compute();
@@ -292,6 +298,76 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				count = total_occurrences;
 			}
 			return count;
+		}
+	}
+	public class CountOccurencesALT extends RecursiveTask<Integer>{
+		String query;
+		String review;
+		int start;
+		int end;
+
+		CountOccurencesALT(String keyword, String text){
+			this(keyword, text, 0, text.length());
+		}
+
+		CountOccurencesALT(String keyword, String text, int start, int end){
+			this.query = keyword;
+			this.review = text.toString();
+			this.start = start;
+			this.end = end;
+		}
+		protected Integer compute() {
+			int count = 0;
+			int k = 0;
+//			if (end - start < 2) {
+//				if (query.equals(review[start])) {
+//					count++;
+//				}
+//			} else if (end - start < T) {
+//				for (int i = start; i <= end; i++) {
+//					if (query.equals(review[i])) {
+//						count++;
+//					}
+//				}
+			if (end - start < query.length()){
+				for (int i=0; i < review.length(); i++){
+					if(Util.isWhitespaceOrPunctuationMark(review.charAt(i))){
+						if(k == query.length()){
+							count++;
+						}
+						k = 0;
+					}else if(k >= 0){
+						if(k < query.length() && review.charAt(i) == query.charAt(k)){
+							k++;
+						}else{
+							k = -1;
+						}
+					}
+				}
+				if(k == query.length()){
+					count++;
+				}
+				return count;
+
+			}else{
+				int pivot = findPivot((start + end) / 2);
+
+				CountOccurencesALT left = new CountOccurencesALT(query, review, start, pivot);
+				CountOccurencesALT right = new CountOccurencesALT(query, review, pivot + 1, end);
+				right.fork();
+				int occurrence_left = left.compute();
+				int occurrences_right = right.join();
+				int total_occurrences = occurrence_left + occurrences_right;
+				count = total_occurrences;
+			}
+			return count;
+		}
+		public int findPivot(int index){
+			int good = index;
+			for (int i = index; Util.isWhitespaceOrPunctuationMark(review.charAt(index)); i++){
+				good = i;
+			}
+			return good;
 		}
 	}
 }

@@ -25,7 +25,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		int benchmark = 3; //benchmark to be used (1-3 on your machine or 0 on Serenity)
+		int benchmark = 1; //benchmark to be used (1-3 on your machine or 0 on Serenity)
 		long startTime = System.currentTimeMillis();
 		YelpQuery query = YelpQuery.forBenchmark(benchmark);
 		System.out.println("*** QUERY ***");
@@ -43,7 +43,8 @@ public class Main {
 		System.out.println("*** RESULT ***");
 		int i = 1;
 		for(RRecord rbid : rbids){
-			System.out.println(i+") "+query.getData().getBusiness(rbid.businessID).name+" ("+rbid.relevance_score+")");
+			System.out.println
+					(i+") "+ query.getData().getBusiness(rbid.businessID).name+" ("+rbid.relevance_score+")");
 			i++;
 		}
 		long endTime = System.currentTimeMillis();
@@ -174,60 +175,102 @@ public class Main {
 	
 	@Test
     public void testCountOccurrences() {
-		//TODO: Add some tests for intermediary T values yourself
 		QueryEngine sequential = new SequentialSearch();
 		QueryEngine parallel = new ParallelSearch(4,0);
+		QueryEngine parallelT60 = new ParallelSearch(4,60);
+		QueryEngine parallelT1K = new ParallelSearch(4,1000);
 		
 		String keyword = "burger";
 		YelpData data;
 		List<RRecord> res_seq;
 		List<RRecord> res_par;
+		List<RRecord> res_parT60;
+		List<RRecord> res_parT1K;
 		
 		data = YelpData.forReviewText("Super Food", 5, "");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.size(),res_par.size());
+		assertEquals(res_seq.size(),res_parT60.size());
+		assertEquals(res_seq.size(),res_parT1K.size());
 				
 		data = YelpData.forReviewText("Super Food", 5, "burger");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
 		
 		data = YelpData.forReviewText("Super Food", 5, "This burger was soooo good!");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
 		
 		data = YelpData.forReviewText("Super Food", 5, "Great burger");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
 
 		data = YelpData.forReviewText("Super Food", 5, "Great burger!");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
 		
 		data = YelpData.forReviewText("Super Food", 5, "Great Burger!");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertTrue(res_seq.size() == 0); //0
+		assertTrue(res_par.size() == 0);
+		assertTrue(res_parT60.size() == 0);
+		assertTrue(res_parT1K.size() == 0);
 		
 		data = YelpData.forReviewText("Super Food", 5, "burgers don't get any better!");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertTrue(res_seq.size() == 0); //0
-		
+		assertTrue(res_par.size() == 0);
+		assertTrue(res_parT60.size() == 0);
+		assertTrue(res_parT1K.size() == 0);
+
 		data = YelpData.forReviewText("Super super burger - burger supper", 3, "While super burger supper, not super super burger (burger) supper as advertised");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
+
 		
 		data = YelpData.forReviewText("Super burgeR", 1, "burgerburger burger    burger,,,burger-burger:burger; burger"+System.lineSeparator()+"burger!");
 		res_seq = sequential.search(keyword, data);
 		res_par = parallel.search(keyword, data);
+		res_parT60 = parallel.search(keyword, data);
+		res_parT1K = parallel.search(keyword, data);
 		assertEquals(res_seq.get(0).relevance_score,res_par.get(0).relevance_score,epsilon); //5 occurrences (3rd,4th,7th,8th,9th substring occurrence)
-    }
+		assertEquals(res_seq.get(0).relevance_score,res_parT60.get(0).relevance_score,epsilon);
+		assertEquals(res_seq.get(0).relevance_score,res_parT1K.get(0).relevance_score,epsilon);
+	}
 	
 	static private boolean correctOrder(List<RRecord> res){
 		for(int i = 1; i < res.size(); i++){
