@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ProjectPDJFJ:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/PaReport.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/PaReport.log" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.log" afterDir="false" />
@@ -10,17 +14,9 @@
       <change beforePath="$PROJECT_DIR$/Report/PaReport.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/PaReport.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Report/PaReport.toc" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/META-INF/ProjectPDJFJ.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Estimate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Estimate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/YelpData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/YelpData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpBusinessReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpBusinessReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpDataHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpDataHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpReviewReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/data/readers/YelpReviewReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$MergeSortTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$MergeSortTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurencesALT.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurencesALT.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/SequentialSearch.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
     </list>
@@ -53,9 +49,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/vub/pdproject/search" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -65,7 +61,7 @@
       <recent name="$PROJECT_DIR$/src/com/vub/pdproject/search" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.Main.testParallelization2A">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
@@ -144,10 +140,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Main.testParallelization2A" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.Main.testCountOccurrences" />
         <item itemvalue="JUnit.Main.testParallelization2B" />
-        <item itemvalue="JUnit.Main.testParallelization2A" />
         <item itemvalue="JUnit.com.vub.pdproject in ProjectPDJFJ" />
       </list>
     </recent_temporary>
@@ -182,42 +178,50 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="99" y="99" width="1722" height="885" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594756197777" />
-    <state width="1878" height="357" key="GridCell.Tab.0.bottom" timestamp="1594815324261">
+    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594896217159">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594896217159" />
+    <state width="1878" height="357" key="GridCell.Tab.0.bottom" timestamp="1594895626287">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1878" height="357" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
     <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.center" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.0.center" timestamp="1594895626286">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
     <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.left" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.0.left" timestamp="1594895626286">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
     <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.right" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.0.right" timestamp="1594895626286">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
     <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.1.bottom" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.1.bottom" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.1.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
-    <state width="1878" height="357" key="GridCell.Tab.1.center" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.1.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
+    <state width="1878" height="357" key="GridCell.Tab.1.center" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.1.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
-    <state width="1878" height="357" key="GridCell.Tab.1.left" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.1.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
+    <state width="1878" height="357" key="GridCell.Tab.1.left" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.1.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
-    <state width="1878" height="357" key="GridCell.Tab.1.right" timestamp="1594815324261">
+    <state width="1878" height="357" key="GridCell.Tab.1.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
+    <state width="1878" height="357" key="GridCell.Tab.1.right" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.1.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594815324261" />
+    <state width="1878" height="357" key="GridCell.Tab.1.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor" timestamp="1594896262756">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594896262756" />
     <state x="623" y="248" key="run.anything.popup" timestamp="1594799193780">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

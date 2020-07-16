@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.12.4)  14 JUL 2020 21:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.12.4)  16 JUL 2020 12:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -156,24 +156,39 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2
 
 ]
+Overfull \hbox (4.38954pt too wide) in paragraph at lines 23--24
+[]\OT1/cmr/m/n/10 Een an-der oploss-ing is het ge-bruik van hashmaps, hi-er-bij
+ wordt het voorkomen
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 <Preset_1.png, id=14, 462.528pt x 346.896pt>
 File: Preset_1.png Graphic file (type png)
 <use Preset_1.png>
-Package pdftex.def Info: Preset_1.png  used on input line 47.
+Package pdftex.def Info: Preset_1.png  used on input line 54.
 (pdftex.def)             Requested size: 241.49895pt x 181.12799pt.
 <Preset_2.png, id=16, 462.528pt x 346.896pt>
 File: Preset_2.png Graphic file (type png)
 <use Preset_2.png>
-Package pdftex.def Info: Preset_2.png  used on input line 54.
+Package pdftex.def Info: Preset_2.png  used on input line 61.
 (pdftex.def)             Requested size: 241.49895pt x 181.12799pt.
 <Preset_3.png, id=17, 462.528pt x 346.896pt>
 File: Preset_3.png Graphic file (type png)
 <use Preset_3.png>
-Package pdftex.def Info: Preset_3.png  used on input line 61.
+Package pdftex.def Info: Preset_3.png  used on input line 68.
 (pdftex.def)             Requested size: 241.49895pt x 181.12799pt.
- [3
 
-] [4 <./Preset_1.png> <./Preset_2.png>] [5 <./Preset_3.png>] (./PaReport.aux)
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3
+
+] [4 <./Preset_1.png> <./Preset_2.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./Preset_3.png>] [6] (./PaReport.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -181,20 +196,20 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  1462 strings out of 494587
  20894 string characters out of 6177759
- 80599 words of memory out of 5000000
+ 82599 words of memory out of 5000000
  5101 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,7n,25p,420b,221s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,7n,25p,677b,223s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on PaReport.pdf (5 pages, 92506 bytes).
+Output written on PaReport.pdf (6 pages, 94967 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 50 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

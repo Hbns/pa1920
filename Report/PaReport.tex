@@ -17,7 +17,16 @@
 \subsection{Fase 1}
 Fase 1 is opgedeeld in twee delen, het eerste deel maakt een lijst met relevante businesses door in de base case de evaluaterevalence methode uit SequentialSearch aan te roepen. De Yelpdata wordt dus in stukken opgedeeld tot het kleinste deel een business is. Deze lijst wordt in het tweede deel aan de hand van een parallele mergesort gesorteerd. Deze code is terug te vinden in de ParallelSearch klasse.
 \subsection{Fase 2}
-In progress
+Het doorzoeken van de revieuw om het aantal voorkomens van een woord te bepalen kan op verschillende manieren.
+Er bestaat een java klasse split welke een text opdeelt en per woord in een vector stopt. Echter heb ik moeilijkheden om de reguliere expressie die aangeeft waar een woord eindigt (bv spatie of leesteken) zo in te stellen dat de unit tests slagen. Ik had net iets meer of minder voorkomens dan de sequentiële search afhangende van de gebruikte reguliere expresie. Zonder controle over de input van de revieuws zou een reguliere expressie die voor een preset werkt misschien in een andere preset iets over het hoofd kijken. Deze code kan u vinden in CountOccurencesP en wordt aangeroepen in de functie countOccurencesP beide staan in ParallelSearch.java
+
+Een ander oplossing is het gebruik van hashmaps, hierbij wordt het voorkomen van ieder woord geteld. Deze hash opslagen zou bij een volgende zoektocht snel het aantal voorkomens uit de hash kunnen halen. In deze hash zijn de woorden de key's en het aantal voorkomens de value.
+
+Als derde oplossing heb ik geprobeerd de sequentiële manier van voorkomens tellen te parallelliseren. Het is me niet gelukt hier alle bugs uit te krijgen.
+De code werkt omdat de tweede if-test in de compute functie altijd true is en het sequentiële algoritme start.
+Deze code kan u vinden in CountOccurencesALT en wordt aangeroepen in de functie countOccurencesP beide staan in ParallelSearch.java
+
+
 \section{Evaluatie}
 De benchmarks op eigen computer (quad core i5-2300 @2.80GHz) zijn 4 maal uitgevoerd. Voor SequentialSearch, ParallelSearch met 1, 2 workers en ParallelSearch met 4 workers. Dit telkens 1500 keer. De resultaten worden per preset weergegeven.
 
@@ -105,8 +114,7 @@ het meeste winst wordt geboekt bij preset 1, de preset met het meest aantal busi
 
 \subsection{Fase 2}
 
-Het doorzoeken van de revieuw om het aantal voorkomens van een woord te bepalen kan op verschillende manieren.
-Er bestaat een java klasse split welke een text opdeelt en per woord in een vector stopt. Echter had ik wat moeilijkheden om de reguliere expressie die aangeeft waar een woord eindigt (bv spatie of leesteken) zo in te stellen dat de unit tests slagen. Ik had net iets meer of minder voorkomens dan de sequentiële search. Zonder controle over de input van de revieuws zou een reguliere expressie die voor een preset werkt misschien in een andere preset iets over het hoofd kijken. Een ander mischien betere oplossing is het gebruik van hashmaps, hierbij wordt het voorkomen van ieder woord geteld. Deze hash opslagen zou bij een volgende zoektocht snel het aantal voorkomens uit de hash kunnen halen. In deze hash zijn de woorden de key's en het aantal voorkomens de value.
+Testing..
 
 
 

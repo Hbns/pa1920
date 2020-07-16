@@ -32,7 +32,7 @@ import static com.vub.pdproject.search.SequentialSearch.evaluate_relevance;
  */
 public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> implements QueryEngine {
 	int p; //parallelism level (i.e. max. # cores that can be used by Java Fork/Join)
-	int T; //sequential threshold (semantics depend on your cut-off implementation)
+	int co; //sequential threshold (semantics depend on your cut-off implementation)
 	static ForkJoinPool forkJoinPool;
 	String query;
 	YelpData dataInMem;
@@ -53,11 +53,11 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 * Creates a parallel search engine with p worker threads and sequential cut-off threshold T.
 	 *
 	 * @param p parallelism level
-	 * @param T sequential threshold
+	 * @param cutoff sequential threshold
 	 */
-	public ParallelSearch(int p, int T) {
+	public ParallelSearch(int p, int cutoff) {
 		this.p = p;
-		this.T = T;
+		this.co = cutoff;
 		//Hint: Initialise the Java Fork/Join framework here as well.
 		forkJoinPool = new ForkJoinPool(p);
 
@@ -201,19 +201,15 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		//fetch data for business
 		Business bd = data.getBusiness(businessID);
 
-		//De Parralelle oplossing geeft fout resultaat, de unit tests falen.
 		//check in how many times query string appears in reviews
 		int occurences = 0;
 		for(String rid : bd.reviews){
-			//occurences += countOccurrences(keyword,data.getReview(rid).text);
 			occurences += countOccurrencesP(keyword,data.getReview(rid).text);
 		}
 
 		//calculate relevance score
 		double relevance_score = 0;
-		//if(countOccurrences(keyword,bd.name) > 0){
-			if(countOccurrencesP(keyword,bd.name) > 0){
-
+		if(countOccurrencesP(keyword,bd.name) > 0){
 			relevance_score = 0.5;
 		}
 		relevance_score += 1.5*occurences/(occurences+20);
@@ -259,6 +255,12 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		return output;
 	}
 
+	/**
+	 * This represents the first idea of cutting up the review text into a per word array.
+	 * Then splitting the array with forkjoin.
+	 * The problem here is that the resulting list is not exactly equal to the sequential solution.
+	 */
+
 	public class CountOccurences extends RecursiveTask<Integer>{
 		String query;
 		String[] review;
@@ -281,7 +283,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				if (query.equals(review[start])) {
 					count++;
 				}
-			} else if (end - start < T) {
+			} else if (end - start < co) {
 				for (int i = start; i <= end; i++) {
 					if (query.equals(review[i])) {
 						count++;
@@ -300,6 +302,12 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			return count;
 		}
 	}
+
+	/**
+	 * Here i tried to implement the sequential solution in a parallel way.
+	 * But exactly the parallelization poses problems.
+	 * The code runs because the second if test in compute is always true and does the counting sequentially :-(
+	 */
 	public class CountOccurencesALT extends RecursiveTask<Integer>{
 		String query;
 		String review;
@@ -312,25 +320,20 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 
 		CountOccurencesALT(String keyword, String text, int start, int end){
 			this.query = keyword;
-			this.review = text.toString();
+			this.review = text;
 			this.start = start;
 			this.end = end;
 		}
 		protected Integer compute() {
 			int count = 0;
 			int k = 0;
-//			if (end - start < 2) {
-//				if (query.equals(review[start])) {
-//					count++;
-//				}
-//			} else if (end - start < T) {
-//				for (int i = start; i <= end; i++) {
-//					if (query.equals(review[i])) {
-//						count++;
-//					}
-//				}
-			if (end - start < query.length()){
-				for (int i=0; i < review.length(); i++){
+			// no work when text smaller then query.
+			if ((end - start) < query.length()){
+				return count;
+			}
+			// This is always true, no parallelism here!! -> code runs
+			if (end - start >= query.length() || (end - start) < co){
+				for (int i=start; i < end; i++){
 					if(Util.isWhitespaceOrPunctuationMark(review.charAt(i))){
 						if(k == query.length()){
 							count++;
@@ -351,9 +354,8 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 
 			}else{
 				int pivot = findPivot((start + end) / 2);
-
 				CountOccurencesALT left = new CountOccurencesALT(query, review, start, pivot);
-				CountOccurencesALT right = new CountOccurencesALT(query, review, pivot + 1, end);
+				CountOccurencesALT right = new CountOccurencesALT(query, review, pivot, end);
 				right.fork();
 				int occurrence_left = left.compute();
 				int occurrences_right = right.join();
@@ -362,12 +364,18 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			}
 			return count;
 		}
+
+		/**
+		 * When chosing a pivot to split the work, we make sure the split happens on a space or punctuation.
+		 * @param index initial half of the text
+		 * @return the closest (higher) index that is space or punctuation.
+		 */
 		public int findPivot(int index){
-			int good = index;
-			for (int i = index; Util.isWhitespaceOrPunctuationMark(review.charAt(index)); i++){
-				good = i;
+			int indexOnSpace = index;
+			for (int i = index; Util.isWhitespaceOrPunctuationMark(review.charAt(i)) == false ; i++){
+				indexOnSpace = i + 1; //plus one since the for loop breaks when chatAt(new i) is space or punctuation.
 			}
-			return good;
+			return indexOnSpace;
 		}
 	}
 }

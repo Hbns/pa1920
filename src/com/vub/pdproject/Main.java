@@ -32,7 +32,7 @@ public class Main {
 		System.out.println(query); //prints out some information about this benchmark
 
 		QueryEngine qe = new ParallelSearch(4,Integer.MAX_VALUE);
-		//QueryEngine qe = new ParallelSearch(4,10);
+		//QueryEngine qe = new ParallelSearch(4,100);
 
 		//QueryEngine qe = new SequentialSearch();
 
