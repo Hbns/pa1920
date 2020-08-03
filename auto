@@ -1,0 +1,5 @@
+#!/bin/bash
+
+java -jar ProjectPDJFJ_P_T_DataPreset_NmbRuns.jar 4 1000 1 2
+java -jar ProjectPDJFJ_P_T_DataPreset_NmbRuns.jar 1 1000 1 2
+

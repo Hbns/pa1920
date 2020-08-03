@@ -7,17 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.aux" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.aux" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.log" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.synctex.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.tex" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Report/PaReport.toc" beforeDir="false" afterPath="$PROJECT_DIR$/Report/PaReport.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurences.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurencesALT.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch$CountOccurencesALT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProjectPDJFJ/com/vub/pdproject/search/ParallelSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/ProjectPDJFJ_jar/ProjectPDJFJ.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/data/models/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/data/models/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,8 +44,9 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/com/vub/pdproject/search" />
     <property name="project.structure.last.edited" value="Artifacts" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.23493975" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -61,7 +56,7 @@
       <recent name="$PROJECT_DIR$/src/com/vub/pdproject/search" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Main.testParallelization2A">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
@@ -140,14 +135,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Main.testParallelization2A" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.Main.testParallelization2A" />
         <item itemvalue="JUnit.Main.testCountOccurrences" />
         <item itemvalue="JUnit.Main.testParallelization2B" />
         <item itemvalue="JUnit.com.vub.pdproject in ProjectPDJFJ" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -174,33 +170,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="555" y="185" width="802" height="710" key="#Plugins" timestamp="1596446661216">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="555" y="185" width="802" height="710" key="#Plugins/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596446661216" />
     <state x="99" y="99" width="1722" height="885" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1594756197777">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="99" y="99" width="1722" height="885" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594756197777" />
-    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594896217159">
+    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1596471139411">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594896217159" />
-    <state width="1878" height="357" key="GridCell.Tab.0.bottom" timestamp="1594895626287">
+    <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596471139411" />
+    <state width="1878" height="283" key="GridCell.Tab.0.bottom" timestamp="1596474440044">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
+    <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
     <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.center" timestamp="1594895626286">
+    <state width="1878" height="283" key="GridCell.Tab.0.center" timestamp="1596474440044">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
+    <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
     <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.left" timestamp="1594895626286">
+    <state width="1878" height="283" key="GridCell.Tab.0.left" timestamp="1596474440044">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
+    <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
     <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="357" key="GridCell.Tab.0.right" timestamp="1594895626286">
+    <state width="1878" height="283" key="GridCell.Tab.0.right" timestamp="1596474440044">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="357" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626286" />
+    <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
     <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
     <state width="1878" height="357" key="GridCell.Tab.1.bottom" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -218,10 +218,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="357" key="GridCell.Tab.1.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
-    <state x="443" y="117" width="1026" height="843" key="SettingsEditor" timestamp="1594896262756">
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor" timestamp="1596471194887">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="443" y="117" width="1026" height="843" key="SettingsEditor/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594896262756" />
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596471194887" />
     <state x="623" y="248" key="run.anything.popup" timestamp="1594799193780">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

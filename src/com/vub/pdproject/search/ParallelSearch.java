@@ -242,14 +242,14 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		if (text.length() == 0){
 			count = 0;
 		}else{
-			//count = forkJoinPool.invoke(new CountOccurencesP(keyword, prepareText(text)));
-			count = forkJoinPool.invoke(new CountOccurencesALT(keyword, text));
+			count = forkJoinPool.invoke(new CountOccurences(keyword, prepareText(text)));
+			//count = forkJoinPool.invoke(new CountOccurencesALT(keyword, text));
 		}
 		return count;
 	}
 
 	public String[] prepareText(String input){
-		String possibleSplits = "\\s|\\.";
+		String possibleSplits = "\\s|,|\\.|-";
 		String[] output;
 		output = input.split(possibleSplits);
 		return output;
@@ -259,6 +259,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 	 * This represents the first idea of cutting up the review text into a per word array.
 	 * Then splitting the array with forkjoin.
 	 * The problem here is that the resulting list is not exactly equal to the sequential solution.
+	 * The list with solutions varies in length depending on the regex expression possibleSplits on line 252.
 	 */
 
 	public class CountOccurences extends RecursiveTask<Integer>{
@@ -283,7 +284,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 				if (query.equals(review[start])) {
 					count++;
 				}
-			} else if (end - start < co) {
+			} else if (end - start < co) {		// co is cutoff value T.
 				for (int i = start; i <= end; i++) {
 					if (query.equals(review[i])) {
 						count++;

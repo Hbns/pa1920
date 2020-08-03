@@ -10,4 +10,5 @@ public class Review {
     public String businessId; //the id of the reviewed business
     public int stars; //the review rating (1-5 stars)
     public String text; //the review text
+    
 }
