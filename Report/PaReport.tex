@@ -32,25 +32,6 @@ De benchmarks op eigen computer (quad core i5-2300 @2.80GHz) zijn 4 maal uitgevo
 
 \subsection{Fase 1}
 
-\begin{table}[h!]
-	\centering
-\begin{tabular}{|c|c|c|c|}
-	\hline 
-	Runtime ms & Preset1 & Preset2 & Preset3 \\ 
-	\hline 
-	Parallel P=1 & 466 & 514 & 145 \\ 
-	\hline 
-	Parallel P=2 & 304 & 328 & 111 \\ 
-	\hline 
-	Parallel P=4 & 273 & 291 & 108 \\ 
-	\hline 
-	Sequential & 451 & 381 & 134 \\ 
-	\hline 
-\end{tabular}
-\caption{Gemiddele runtime in miliseconden}
-\label{table:1}
-\end{table}
-
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{Preset_1}
@@ -71,6 +52,25 @@ De benchmarks op eigen computer (quad core i5-2300 @2.80GHz) zijn 4 maal uitgevo
 	\caption[Preset1]{Preset3}
 	\label{fig:preset3}
 \end{figure}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline 
+		Runtime ms & Preset1 & Preset2 & Preset3 \\ 
+		\hline 
+		Parallel P=1 & 466 & 514 & 145 \\ 
+		\hline 
+		Parallel P=2 & 304 & 328 & 111 \\ 
+		\hline 
+		Parallel P=4 & 273 & 291 & 108 \\ 
+		\hline 
+		Sequential & 451 & 381 & 134 \\ 
+		\hline 
+	\end{tabular}
+	\caption{Gemiddele runtime in miliseconden}
+	\label{table:1}
+\end{table}
 
 \subsubsection{Overhead}
 
@@ -99,7 +99,6 @@ De overhead kan kleiner gemaakt worden door een goede cut-off waarde te gebruike
 		\hline 
 		Tseq/T2 & 1.48 & 1.16 & 1.21 \\ 
 		\hline 
-		\hline 
 		Tseq/T4 & 1.65 & 1.31 & 1.24 \\ 
 		\hline 
 	\end{tabular} 
@@ -114,8 +113,41 @@ het meeste winst wordt geboekt bij preset 1, de preset met het meest aantal busi
 
 \subsection{Fase 2}
 
-Testing..
+Hoewel de eerste manier (a.d.h.v split functie) werkt op mijn laptop en het aantal voorkomens parallel wordt geteld, werkt deze spijtig genoeg niet op serenity. De alternatieve versie draait maar telt de voorkomens niet parallel. Hierdoor kan ik niet expliciet testen met verschillende cutoff waardes.
 
+Ik heb hierdoor geen metingen voor verschillende threshold's van T. De beste waarde voor T zou een waarde zijn die de overhead minimaliseert en de beste snelheid winst geeft. Een te hoge waarde voor T resulteert in te veel sequentieel werkt terwijl een te lage waarde zou de overhead onnodig groot maakt. Bij een te lage waarde T zou er meer tijd verloren gaan in het maken van al de taken en hierdoor geen snelheidswinst meer gemeten worden.
 
+De onderstaande resultaten werden bekomen door een jar file van het project te laten lopen. Deze neemt 4 argumenten, P, T, DataPreset en het aantal keer dat de file uitgevoerd moet worden. De resultaten van zo een testrun worden weggeschreven naar een csv file. Praktisch heb ik een script aangemaakt dat de test 30 maal uitvoerde voor P waardes 1,4,8,16,32,64. Hierbij verdubbeld het aantal cores bij elke volgende test.
+De verkregen csv files heb ik dan lokaal gekopieerd, de waarden gesorteerd en telkens de mediaan geselecteerd om de speed-up te berekenen. De exacte code voor het verloop van de test staat in de main functie van het project. 
+\subsubsection{Speed-up}
+De testen werden telkens 30 keer uitgevoerd voor 4, 8, 16, 32 en 64 processors.
+De berekening voor de speed-up is uitgevoerd met de mediaan uit de testresultaten. 
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline 
+		Speed-up & Preset1 \\ 
+		\hline 
+		T1/T4 & 1.75 \\ 
+		\hline 
+		T1/T8 & 2.03 \\ 
+		\hline 
+		T1/T16 & 1.98 \\ 
+		\hline
+		T1/T32 & 2.10 \\ 
+		\hline
+		T1/T64 & 2.09 \\ 
+		\hline
+	\end{tabular} 
+	\caption{Speed-up values on serenity.}
+	\label{table:3}
+\end{table}
+
+\subsection{Conclusie}
+In bovenstaande tabel kunnen we zien dat de code vanaf 8 processors niet veel snelheidswinst boekt.
+Volgens mij is de oorzaak het sequentiële deel van de code, namelijk het doorzoeken van de reviews dat hier een bottleneck vormt om de performantie te kunnen verhogen zou dit ook parallel moeten gebeuren met een ideale T zodat de overhead klein blijft. 
+De work en de span worden eigenlijk gedefinieerd door de dag van de parallelle reductie.
+Waar work O(n) is en de span O(log n), uit de test met P=1 leidt ik af dat gemiddelde gemeten waarde voor work 2,9 seconden of 173500 milliseconden is. aan de hand van deze T1 kunnen we de speed-up berekenen voor meerdere processors. Als we de speed-up van Preset1 op eigen computer vergelijken met de testen op serenity, telkens voor P=4 zien we een gelijkaardige speed-up. Wat we op serenity niet vergelijken zijn speed-ups op verschillende data. Afgeleid uit de waarden uit de tests op eigen computer kunnen hier grote verschillen ontstaan.
 
 \end{document}

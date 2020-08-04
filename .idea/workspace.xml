@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ee80de8-dcf8-42da-bfd6-8a02e18ad99d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/ProjectPDJFJ_jar/ProjectPDJFJ.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/data/models/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/data/models/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectPDJFJ.jar" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectPDJFJ.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectPDJFJ2.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vub/pdproject/search/ParallelSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +44,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.23493975" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -60,6 +58,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vub.pdproject.Main" />
       <module name="ProjectPDJFJ" />
+      <option name="PROGRAM_PARAMETERS" value="4 1000 1 1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.vub.pdproject.*" />
@@ -170,6 +169,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="626" y="160" width="660" height="761" key="#Main" timestamp="1596513413192">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="626" y="160" width="660" height="761" key="#Main/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596513413192" />
     <state x="555" y="185" width="802" height="710" key="#Plugins" timestamp="1596446661216">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -182,25 +185,25 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="685" y="330" width="527" height="413" key="#com.intellij.ide.util.TreeClassChooserDialog/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596471139411" />
-    <state width="1878" height="283" key="GridCell.Tab.0.bottom" timestamp="1596474440044">
+    <state width="1878" height="283" key="GridCell.Tab.0.bottom" timestamp="1596516159919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
+    <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596516159919" />
     <state width="1878" height="283" key="GridCell.Tab.0.bottom/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="283" key="GridCell.Tab.0.center" timestamp="1596474440044">
+    <state width="1878" height="283" key="GridCell.Tab.0.center" timestamp="1596516159919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
+    <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596516159919" />
     <state width="1878" height="283" key="GridCell.Tab.0.center/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="283" key="GridCell.Tab.0.left" timestamp="1596474440044">
+    <state width="1878" height="283" key="GridCell.Tab.0.left" timestamp="1596516159919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
+    <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596516159919" />
     <state width="1878" height="283" key="GridCell.Tab.0.left/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
-    <state width="1878" height="283" key="GridCell.Tab.0.right" timestamp="1596474440044">
+    <state width="1878" height="283" key="GridCell.Tab.0.right" timestamp="1596516159919">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596474440044" />
+    <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596516159919" />
     <state width="1878" height="283" key="GridCell.Tab.0.right/8.1075.1920.1080/0.0.1920.1080@8.1075.1920.1080" timestamp="1594807332683" />
     <state width="1878" height="357" key="GridCell.Tab.1.bottom" timestamp="1594895626287">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -218,10 +221,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1878" height="357" key="GridCell.Tab.1.right/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1594895626287" />
-    <state x="443" y="117" width="1026" height="843" key="SettingsEditor" timestamp="1596471194887">
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor" timestamp="1596512683151">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="443" y="117" width="1026" height="843" key="SettingsEditor/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596471194887" />
+    <state x="443" y="117" width="1026" height="843" key="SettingsEditor/8.1075.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1596512683151" />
     <state x="623" y="248" key="run.anything.popup" timestamp="1594799193780">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

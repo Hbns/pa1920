@@ -110,11 +110,10 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 			right.fork();
 			List<RRecord> relevant_businesses_left = left.compute();
 			List<RRecord> relevant_businesses_right = right.join();
-			List<RRecord> finalList = Stream.of(relevant_businesses_left, relevant_businesses_right)
+
+			return Stream.of(relevant_businesses_left, relevant_businesses_right)
 					.flatMap(x -> x.stream())
 					.collect(Collectors.toList());
-
-			return finalList;
 		}
 		return result;
 
@@ -242,8 +241,8 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 		if (text.length() == 0){
 			count = 0;
 		}else{
-			count = forkJoinPool.invoke(new CountOccurences(keyword, prepareText(text)));
-			//count = forkJoinPool.invoke(new CountOccurencesALT(keyword, text));
+			//count = forkJoinPool.invoke(new CountOccurences(keyword, prepareText(text)));
+			count = forkJoinPool.invoke(new CountOccurencesALT(keyword, text));
 		}
 		return count;
 	}
@@ -285,7 +284,7 @@ public class ParallelSearch extends RecursiveTask<List<QueryEngine.RRecord>> imp
 					count++;
 				}
 			} else if (end - start < co) {		// co is cutoff value T.
-				for (int i = start; i <= end; i++) {
+				for (int i = start; i < end; i++) {
 					if (query.equals(review[i])) {
 						count++;
 					}

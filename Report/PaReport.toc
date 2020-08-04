@@ -6,3 +6,5 @@
 \contentsline {subsubsection}{\numberline {2.1.1}Overhead}{5}
 \contentsline {subsubsection}{\numberline {2.1.2}Speed-up}{5}
 \contentsline {subsection}{\numberline {2.2}Fase 2}{6}
+\contentsline {subsubsection}{\numberline {2.2.1}Speed-up}{6}
+\contentsline {subsection}{\numberline {2.3}Conclusie}{7}
